@@ -29,7 +29,7 @@ public class ManagePoolConnections {
 	}
 	
 	/**
-	 * Escribir el Hbase
+	 * Escribir en Hbase
 	 * @param colFamily		Nombre del Column Family
 	 * @param colQualifier	Nombre del Qualifier
 	 * @param value			Dato a escibir
