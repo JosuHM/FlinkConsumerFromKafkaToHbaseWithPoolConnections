@@ -65,44 +65,13 @@ public class ManagePoolConnections {
        
         // Saving the put Instance to the Table.
         t.put(p);
-
-        /**
-         * Obtener la descripcion de la tabla
-         */
-	    HTableDescriptor tableDescriptor = t.getTableDescriptor();
-	    System.out.println(tableDescriptor);
         
         // closing Table
         t.close();
+
         //Devolver conexión al Pool de Conexiones
         pool.returnObject(c); 
 	}
 	
-	/**
-	 * Obtener un número "i" de row de la tabla de HBase
-	 * @param i				Número de rows a devolver
-	 * @throws Exception
-	 */
-    public void getLimitRows(int i) throws Exception{
-        Connection c = pool.borrowObject();              
-        Table t = c.getTable(tableName); 
-        Scan s = new Scan();
-        ResultScanner scanner = t.getScanner(s);
-        int j = 0;
-        for (Result result = scanner.next(); result != null && j < i; result = scanner.next()){            
-            Map<byte[],byte[]> qualifiers = result.getFamilyMap(Bytes.toBytes("msg"));
-            for(int k = 0; k < qualifiers.size(); k++){
-                Object[] values = qualifiers.values().toArray();
-                Object[] keys = qualifiers.keySet().toArray();                
-                String key = Bytes.toString((byte[]) keys[k]);
-                String value = Bytes.toString((byte[]) values[k]);
-                System.out.println("[msg:" + key + "] =  " + value);            
-            }
-            j++;
-        }        
-        scanner.close();
-        t.close();
-        pool.returnObject(c);   
-    }
-
+	
 }
