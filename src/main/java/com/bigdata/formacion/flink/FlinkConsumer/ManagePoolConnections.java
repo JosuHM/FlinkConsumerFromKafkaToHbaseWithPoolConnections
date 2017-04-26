@@ -1,7 +1,6 @@
 package com.bigdata.formacion.flink.FlinkConsumer;
 
 import java.util.Date;
-import java.util.Map;
 
 import org.apache.commons.net.ntp.TimeStamp;
 import org.apache.commons.pool2.ObjectPool;
@@ -11,9 +10,6 @@ import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.Admin;
 import org.apache.hadoop.hbase.client.Connection;
 import org.apache.hadoop.hbase.client.Put;
-import org.apache.hadoop.hbase.client.Result;
-import org.apache.hadoop.hbase.client.ResultScanner;
-import org.apache.hadoop.hbase.client.Scan;
 import org.apache.hadoop.hbase.client.Table;
 import org.apache.hadoop.hbase.util.Bytes;
 
